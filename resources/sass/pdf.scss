@@ -1,0 +1,137 @@
+$color-primary: #016e06;
+$color-secondary: #0a70b9;
+$color-accent: #00217e;
+$color-text: #333333;
+$color-border: #808080;
+$color-background: #ffffff;
+
+.info_div {
+    text-align: center;
+
+    .info {
+        color: $color-primary;
+    }
+}
+
+.portada_top {
+    margin: 2rem 0;
+
+    .img_logo {
+        width: 200px !important;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .titulo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: $color-primary;
+
+        h1 {
+            font-size: 2.0em;
+            font-weight: bold;
+            color: $color-primary;
+        }
+
+        span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: $color-secondary;
+        }
+    }
+}
+
+.container {
+    max-width: 950px;
+}
+
+.btnCorreo {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    z-index: 9999;
+    background-color: $color-secondary;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+        color: $color-secondary;
+        background: #fff;
+        border: 1px solid $color-secondary;
+        transition: 0.6s ease;
+    }
+}
+
+.bordes {
+
+    .col-6,
+    .col-3,
+    .col-4 {
+        border-bottom: 1px solid $color-border;
+        margin-bottom: 0.3em;
+
+        &:hover {
+            background: rgba($color-border, 0.13);
+        }
+    }
+}
+
+.datos {
+    h3 {
+        color: $color-primary;
+    }
+
+    p {
+        font-weight: bold;
+        border-left: 3px solid $color-primary;
+        padding-left: 0.5em;
+    }
+
+    span {
+        font-weight: 400;
+    }
+}
+
+.pdf-button {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    z-index: 999;
+    background: $color-primary;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+
+    &:hover {
+        background: #fff;
+        color: $color-primary;
+        border: 1px solid $color-primary;
+        transition: 0.4s;
+    }
+
+    i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        height: 100%;
+    }
+}
+
+@media print {
+    .pdf-only {
+        display: none;
+    }
+}

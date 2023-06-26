@@ -1,0 +1,118 @@
+.info_div {
+  text-align: center;
+}
+.info_div .info {
+  color: #016e06;
+}
+
+.portada_top {
+  margin: 2rem 0;
+}
+.portada_top .img_logo {
+  width: 200px !important;
+  height: 100%;
+  object-fit: contain;
+}
+.portada_top .titulo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #016e06;
+}
+.portada_top .titulo h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #016e06;
+}
+.portada_top .titulo span {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #0a70b9;
+}
+
+.container {
+  max-width: 950px;
+}
+
+.btnCorreo {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #0a70b9;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+}
+.btnCorreo:hover {
+  color: #0a70b9;
+  background: #fff;
+  border: 1px solid #0a70b9;
+  transition: 0.6s ease;
+}
+
+.bordes .col-6,
+.bordes .col-3,
+.bordes .col-4 {
+  border-bottom: 1px solid #808080;
+  margin-bottom: 0.3em;
+}
+.bordes .col-6:hover,
+.bordes .col-3:hover,
+.bordes .col-4:hover {
+  background: rgba(128, 128, 128, 0.13);
+}
+
+.datos h3 {
+  color: #016e06;
+}
+.datos p {
+  font-weight: bold;
+  border-left: 3px solid #016e06;
+  padding-left: 0.5em;
+}
+.datos span {
+  font-weight: 400;
+}
+
+.pdf-button {
+  position: fixed;
+  bottom: 22px;
+  right: 20px;
+  z-index: 999;
+  background: #016e06;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+.pdf-button:hover {
+  background: #fff;
+  color: #016e06;
+  border: 1px solid #016e06;
+  transition: 0.4s;
+}
+.pdf-button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  height: 100%;
+}
+
+@media print {
+  .pdf-only {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=pdf.css.map */

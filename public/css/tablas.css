@@ -1,0 +1,14 @@
+@media screen and (max-width: 768px) {
+  .tablainfo {
+    position: sticky !important;
+  }
+  .accionestable {
+    position: inherit;
+    right: 0px !important;
+    top: 0px !important;
+    width: fit-content;
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=tablas.css.map */
