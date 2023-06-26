@@ -16,11 +16,17 @@
 <body id="page-top">
     <div id="wrapper">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
-                <img src="https://www.mitviajes.com/wp-content/uploads/2019/03/Logo-Mit-Viajes.png" width="50%" alt="">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <img src="https://www.mitviajes.com/wp-content/uploads/2019/03/Logo-Mit-Viajes.png" width="50%"
+                    alt="">
             </a>
-            <hr class="sidebar-divider">
-
+            <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('reportes.index') }}">
+                    <i class="fas fa-fw fa-bars"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
             <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('imagenes.index') }}">
@@ -35,13 +41,7 @@
                     <span>Usuarios</span>
                 </a>
             </li>
-            <hr class="sidebar-divider d-none d-md-block">
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('reportes.index')}}">
-                    <i class="fas fa-fw fa-bars"></i>
-                    <span>Reportes</span>
-                </a>
-            </li>
+
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
@@ -127,7 +127,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
-    
+
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>

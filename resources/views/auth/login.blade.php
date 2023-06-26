@@ -244,15 +244,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4>Pesquisar passeios no Peru</h4>
-                    <form action="{{ route('search') }}" method="get">
-                        @csrf
-                        <div class="input-group">
-                            <div class="form-outline">
-                                <input type="search" id="name" name="name" class="form-control" />
-                            </div>
-                            <input type="submit" style="border:none" class="btn-inicio" value="Procurar">
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

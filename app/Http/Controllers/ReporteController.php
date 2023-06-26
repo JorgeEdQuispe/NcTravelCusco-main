@@ -29,7 +29,7 @@ class ReporteController extends Controller
         $reporte = Reporte::findOrFail($id);
         $correo = new ReporteMail($reporte);
         Mail::to($reporte->email)->send($correo);
-        return redirect()->back()->with('success', 'Email enviado com sucesso para'. $reporte->email);
+        return redirect()->back()->with('success', 'Email enviado com sucesso para' . $reporte->email);
     }
 
 
@@ -273,4 +273,34 @@ class ReporteController extends Controller
         return redirect()->route('reportes.index')->with('success', 'Reporte eliminado exitosamente');
     }
 
+    public function gridData()
+    {
+        $reportes = Reporte::all(); // Cambia esto según tu modelo y datos
+
+        $data = $reportes->map(function ($reporte) {
+            $nombre = $reporte->nombre;
+            $fecha = $reporte->created_at->format('Y-m-d');
+
+            $iniciales = '';
+            $palabras = explode(' ', $nombre);
+
+            foreach ($palabras as $palabra) {
+                $iniciales .= strtoupper(substr($palabra, 0, 1));
+            }
+
+            $variableConcatenada = $iniciales . date('Ymd', strtotime($fecha)) . 'MIT';
+
+
+            return [
+                'Id' => $reporte->id,
+                'Cod' => $variableConcatenada,
+                'Paquete' => $reporte->tour,
+                'Nombre_pax' => $reporte->nombre,
+                'Email' => $reporte->email,
+
+            ];
+        });
+
+        return response()->json($data);
+    }
 }
