@@ -25,10 +25,10 @@
             <table id="tabladatos" class="table mt-4 table-hover">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Cod</th>
                         <th scope="col">Paquete:</th>
                         <th scope="col">Nombre pax:</th>
-                        <th scope="col">Email:</th>
                         <th scope="col" class="text-center">Acciones</th>
                     </tr>
                 </thead>
@@ -48,10 +48,10 @@
                             $variableConcatenada = $iniciales . date('Ymd', strtotime($fecha)) . 'MIT';
                         @endphp
                         <tr class="tablainfo">
+                            <td>{{ $reporte->id }}</td>
                             <td>{{ $variableConcatenada }}</td>
                             <td>{{ $reporte->tour }}</td>
                             <td>{{ $reporte->nombre }}</td>
-                            <td>{{ $reporte->email }}</td>
                             <td class="text-center accionestable" style="width: 130px">
                                 <a href="{{ route('reportes.edit', $reporte->id) }}" target="_blank"
                                     class="btn btn-primary btn-sm" title="Editar">
