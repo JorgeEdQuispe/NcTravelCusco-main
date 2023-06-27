@@ -403,74 +403,228 @@
                 <script>
                     function generarCamposTrenes(numeroTrenes) {
                         var contenedorTrenes = document.getElementById('contenedorTrenes');
-                        contenedorTrenes.innerHTML = '';
+                        var trenesActuales = contenedorTrenes.querySelectorAll('.row');
+                        var cantidadTrenesActuales = trenesActuales.length;
 
-                        for (var i = 1; i <= numeroTrenes; i++) {
-                            contenedorTrenes.innerHTML += `
-                                <div class="row">
-                                    <div class="col-1 mt-3">
-                                        <label for="tren${i}">Tren:</label>
-                                        <input type="text" value="${i}" class="form-control" readonly>
-                                    </div>
-                                    <div class="col-3 mt-3">
-                                        <label for="ruta${i}">Ruta:</label>
-                                        <input type="text" name="trenes[${i}][ruta]" class="form-control" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="compania${i}">Compañía:</label>
-                                        <input type="text" name="trenes[${i}][compania]" class="form-control" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="servicio${i}">Servicio:</label>
-                                        <input type="text" name="trenes[${i}][servicio]" class="form-control" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="fecha${i}">Fecha:</label>
-                                        <input type="date" name="trenes[${i}][fecha]" class="form-control" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="hora${i}">Hora:</label>
-                                        <input type="text" name="trenes[${i}][hora]" class="form-control" required>
-                                    </div>
-                                </div>
-                                <hr>
-                            `;
+                        if (numeroTrenes < cantidadTrenesActuales) {
+                            // Eliminar campos de trenes adicionales
+                            for (var i = cantidadTrenesActuales; i > numeroTrenes; i--) {
+                                contenedorTrenes.removeChild(trenesActuales[i - 1]);
+                                contenedorTrenes.removeChild(contenedorTrenes.lastElementChild); // Eliminar el último <hr>
+                            }
+                        } else if (numeroTrenes > cantidadTrenesActuales) {
+                            // Agregar campos de trenes adicionales
+                            for (var i = cantidadTrenesActuales + 1; i <= numeroTrenes; i++) {
+                                var row = document.createElement('div');
+                                row.classList.add('row');
+
+                                var col1 = document.createElement('div');
+                                col1.classList.add('col-1', 'mt-3');
+                                row.appendChild(col1);
+
+                                var label1 = document.createElement('label');
+                                label1.setAttribute('for', 'tren' + i);
+                                label1.innerText = 'Tren:';
+                                col1.appendChild(label1);
+
+                                var input1 = document.createElement('input');
+                                input1.setAttribute('type', 'text');
+                                input1.setAttribute('value', i);
+                                input1.classList.add('form-control', 'form-control-sm');
+                                input1.setAttribute('readonly', 'readonly');
+                                col1.appendChild(input1);
+
+                                var col2 = document.createElement('div');
+                                col2.classList.add('col-3', 'mt-3');
+                                row.appendChild(col2);
+
+                                var label2 = document.createElement('label');
+                                label2.setAttribute('for', 'ruta' + i);
+                                label2.innerText = 'Ruta:';
+                                col2.appendChild(label2);
+
+                                var input2 = document.createElement('input');
+                                input2.setAttribute('type', 'text');
+                                input2.setAttribute('name', 'trenes[' + (i - 1) + '][ruta]');
+                                input2.classList.add('form-control', 'form-control-sm');
+                                col2.appendChild(input2);
+
+                                var col3 = document.createElement('div');
+                                col3.classList.add('col-2', 'mt-3');
+                                row.appendChild(col3);
+
+                                var label3 = document.createElement('label');
+                                label3.setAttribute('for', 'compania' + i);
+                                label3.innerText = 'Compañía:';
+                                col3.appendChild(label3);
+
+                                var input3 = document.createElement('input');
+                                input3.setAttribute('type', 'text');
+                                input3.setAttribute('name', 'trenes[' + (i - 1) + '][compania]');
+                                input3.classList.add('form-control', 'form-control-sm');
+                                col3.appendChild(input3);
+
+                                var col4 = document.createElement('div');
+                                col4.classList.add('col-2', 'mt-3');
+                                row.appendChild(col4);
+
+                                var label4 = document.createElement('label');
+                                label4.setAttribute('for', 'servicio' + i);
+                                label4.innerText = 'Servicio:';
+                                col4.appendChild(label4);
+
+                                var input4 = document.createElement('input');
+                                input4.setAttribute('type', 'text');
+                                input4.setAttribute('name', 'trenes[' + (i - 1) + '][servicio]');
+                                input4.classList.add('form-control', 'form-control-sm');
+                                col4.appendChild(input4);
+
+                                var col5 = document.createElement('div');
+                                col5.classList.add('col-2', 'mt-3');
+                                row.appendChild(col5);
+
+                                var label5 = document.createElement('label');
+                                label5.setAttribute('for', 'fecha' + i);
+                                label5.innerText = 'Fecha:';
+                                col5.appendChild(label5);
+
+                                var input5 = document.createElement('input');
+                                input5.setAttribute('type', 'date');
+                                input5.setAttribute('name', 'trenes[' + (i - 1) + '][fecha]');
+                                input5.classList.add('form-control', 'form-control-sm');
+                                col5.appendChild(input5);
+
+                                var col6 = document.createElement('div');
+                                col6.classList.add('col-2', 'mt-3');
+                                row.appendChild(col6);
+
+                                var label6 = document.createElement('label');
+                                label6.setAttribute('for', 'hora' + i);
+                                label6.innerText = 'Hora:';
+                                col6.appendChild(label6);
+
+                                var input6 = document.createElement('input');
+                                input6.setAttribute('type', 'text');
+                                input6.setAttribute('name', 'trenes[' + (i - 1) + '][hora]');
+                                input6.classList.add('form-control', 'form-control-sm');
+                                col6.appendChild(input6);
+
+                                contenedorTrenes.appendChild(row);
+
+                                var hr = document.createElement('hr');
+                                contenedorTrenes.appendChild(hr);
+                            }
                         }
                     }
                 </script>
+
                 <script>
                     function generarCamposHoteles(numeroHoteles) {
                         var contenedorHoteles = document.getElementById('contenedorHoteles');
-                        contenedorHoteles.innerHTML = '';
-                        for (var i = 1; i <= numeroHoteles; i++) {
-                            contenedorHoteles.innerHTML += `
-                                <div class="row">
-                                    <div class="col-3 mt-3">
-                                        <label for="hotel${i}">Hotel:</label>
-                                        <input type="text" name="hoteles[${i}][hotel]" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="col-3 mt-3">
-                                        <label for="lugar${i}">Lugar:</label>
-                                        <input type="text" name="hoteles[${i}][lugar]" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="acomodacion${i}">Acomodación:</label>
-                                        <input type="text" name="hoteles[${i}][acomodacion]" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="fechaIngreso${i}">Fecha de ingreso:</label>
-                                        <input type="date" name="hoteles[${i}][fechaIngreso]" class="form-control form-control-sm" required>
-                                    </div>
-                                    <div class="col-2 mt-3">
-                                        <label for="fechaSalida${i}">Fecha de salida:</label>
-                                        <input type="date" name="hoteles[${i}][fechaSalida]" class="form-control form-control-sm" required>
-                                    </div>
-                                </div>
-                                <hr>
-                            `;
+                        var hotelesActuales = contenedorHoteles.querySelectorAll('.row');
+                        var cantidadHotelesActuales = hotelesActuales.length;
+
+                        if (numeroHoteles < cantidadHotelesActuales) {
+                            // Eliminar campos de hoteles adicionales
+                            for (var i = cantidadHotelesActuales; i > numeroHoteles; i--) {
+                                contenedorHoteles.removeChild(hotelesActuales[i - 1]);
+                                contenedorHoteles.removeChild(contenedorHoteles.lastElementChild); // Eliminar el último <hr>
+                            }
+                        } else if (numeroHoteles > cantidadHotelesActuales) {
+                            // Agregar campos de hoteles adicionales
+                            for (var i = cantidadHotelesActuales + 1; i <= numeroHoteles; i++) {
+                                var row = document.createElement('div');
+                                row.classList.add('row');
+
+                                var col1 = document.createElement('div');
+                                col1.classList.add('col-3', 'mt-3');
+                                row.appendChild(col1);
+
+                                var label1 = document.createElement('label');
+                                label1.setAttribute('for', 'hotel' + i);
+                                label1.innerText = 'Hotel:';
+                                col1.appendChild(label1);
+
+                                var input1 = document.createElement('input');
+                                input1.setAttribute('type', 'text');
+                                input1.setAttribute('name', 'hoteles[' + i + '][hotel]');
+                                input1.classList.add('form-control', 'form-control-sm');
+                                input1.setAttribute('required', 'required');
+                                col1.appendChild(input1);
+
+                                var col2 = document.createElement('div');
+                                col2.classList.add('col-3', 'mt-3');
+                                row.appendChild(col2);
+
+                                var label2 = document.createElement('label');
+                                label2.setAttribute('for', 'lugar' + i);
+                                label2.innerText = 'Lugar:';
+                                col2.appendChild(label2);
+
+                                var input2 = document.createElement('input');
+                                input2.setAttribute('type', 'text');
+                                input2.setAttribute('name', 'hoteles[' + i + '][lugar]');
+                                input2.classList.add('form-control', 'form-control-sm');
+                                input2.setAttribute('required', 'required');
+                                col2.appendChild(input2);
+
+                                var col3 = document.createElement('div');
+                                col3.classList.add('col-2', 'mt-3');
+                                row.appendChild(col3);
+
+                                var label3 = document.createElement('label');
+                                label3.setAttribute('for', 'acomodacion' + i);
+                                label3.innerText = 'Acomodación:';
+                                col3.appendChild(label3);
+
+                                var input3 = document.createElement('input');
+                                input3.setAttribute('type', 'text');
+                                input3.setAttribute('name', 'hoteles[' + i + '][acomodacion]');
+                                input3.classList.add('form-control', 'form-control-sm');
+                                input3.setAttribute('required', 'required');
+                                col3.appendChild(input3);
+
+                                var col4 = document.createElement('div');
+                                col4.classList.add('col-2', 'mt-3');
+                                row.appendChild(col4);
+
+                                var label4 = document.createElement('label');
+                                label4.setAttribute('for', 'fechaIngreso' + i);
+                                label4.innerText = 'Fecha de ingreso:';
+                                col4.appendChild(label4);
+
+                                var input4 = document.createElement('input');
+                                input4.setAttribute('type', 'date');
+                                input4.setAttribute('name', 'hoteles[' + i + '][fechaIngreso]');
+                                input4.classList.add('form-control', 'form-control-sm');
+                                input4.setAttribute('required', 'required');
+                                col4.appendChild(input4);
+
+                                var col5 = document.createElement('div');
+                                col5.classList.add('col-2', 'mt-3');
+                                row.appendChild(col5);
+
+                                var label5 = document.createElement('label');
+                                label5.setAttribute('for', 'fechaSalida' + i);
+                                label5.innerText = 'Fecha de salida:';
+                                col5.appendChild(label5);
+
+                                var input5 = document.createElement('input');
+                                input5.setAttribute('type', 'date');
+                                input5.setAttribute('name', 'hoteles[' + i + '][fechaSalida]');
+                                input5.classList.add('form-control', 'form-control-sm');
+                                input5.setAttribute('required', 'required');
+                                col5.appendChild(input5);
+
+                                contenedorHoteles.appendChild(row);
+
+                                var hr = document.createElement('hr');
+                                contenedorHoteles.appendChild(hr);
+                            }
                         }
                     }
                 </script>
+
 
 
                 <script>

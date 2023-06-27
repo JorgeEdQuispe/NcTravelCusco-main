@@ -499,7 +499,53 @@
                                     input2.setAttribute('required', 'required');
                                     col2.appendChild(input2);
 
-                                    // ... Añade el resto de los campos necesarios
+                                    var col3 = document.createElement('div');
+                                    col3.classList.add('col-2', 'mt-3');
+                                    row.appendChild(col3);
+
+                                    var label3 = document.createElement('label');
+                                    label3.setAttribute('for', 'acomodacion' + i);
+                                    label3.innerText = 'Acomodación:';
+                                    col3.appendChild(label3);
+
+                                    var input3 = document.createElement('input');
+                                    input3.setAttribute('type', 'text');
+                                    input3.setAttribute('name', 'hoteles[' + i + '][acomodacion]');
+                                    input3.classList.add('form-control', 'form-control-sm');
+                                    input3.setAttribute('required', 'required');
+                                    col3.appendChild(input3);
+
+                                    var col4 = document.createElement('div');
+                                    col4.classList.add('col-2', 'mt-3');
+                                    row.appendChild(col4);
+
+                                    var label4 = document.createElement('label');
+                                    label4.setAttribute('for', 'fechaIngreso' + i);
+                                    label4.innerText = 'Fecha de ingreso:';
+                                    col4.appendChild(label4);
+
+                                    var input4 = document.createElement('input');
+                                    input4.setAttribute('type', 'date');
+                                    input4.setAttribute('name', 'hoteles[' + i + '][fechaIngreso]');
+                                    input4.classList.add('form-control', 'form-control-sm');
+                                    input4.setAttribute('required', 'required');
+                                    col4.appendChild(input4);
+
+                                    var col5 = document.createElement('div');
+                                    col5.classList.add('col-2', 'mt-3');
+                                    row.appendChild(col5);
+
+                                    var label5 = document.createElement('label');
+                                    label5.setAttribute('for', 'fechaSalida' + i);
+                                    label5.innerText = 'Fecha de salida:';
+                                    col5.appendChild(label5);
+
+                                    var input5 = document.createElement('input');
+                                    input5.setAttribute('type', 'date');
+                                    input5.setAttribute('name', 'hoteles[' + i + '][fechaSalida]');
+                                    input5.classList.add('form-control', 'form-control-sm');
+                                    input5.setAttribute('required', 'required');
+                                    col5.appendChild(input5);
 
                                     contenedorHoteles.appendChild(row);
 
@@ -509,10 +555,6 @@
                             }
                         }
                     </script>
-
-
-
-
 
                     <script>
                         function calcularRestante() {
