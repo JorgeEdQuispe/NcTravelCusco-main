@@ -21,9 +21,10 @@ Route::post('mensajeNc', [MailController::class, 'getMail'])->name('mensaje');
 
 // Páginas de inicio
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/nikonctravel', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [ReporteController::class, 'index'])->name('home');
 
 //Reportes
+
 Route::resource('reportes', ReporteController::class)->middleware('auth')->names('reportes');
 Route::get('reporte/{id}/pdf', [ReporteController::class, 'downloadPdf'])->name('reporte.pdf');
 Route::get('reporte/{id}', [ReporteController::class, 'show'])->name('reporte');
