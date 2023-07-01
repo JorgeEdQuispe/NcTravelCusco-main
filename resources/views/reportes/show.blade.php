@@ -11,38 +11,38 @@
     <link rel="stylesheet" href="{{ asset('css/pdf.css') }}">
 
 </head>
+<style>
+    .portada {
+        width: 100%;
+        height: 100%;
+    }
+
+    .portada img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
 <body class="container">
     <div class="container">
         <div class="row linea">
-            <div class="col-12">
-                @php
-                    $nombre = $reporte->nombre;
-                    $fecha = $reporte->created_at->format('Y-m-d'); // Utiliza la fecha de creación del reporte
-                    
-                    $iniciales = '';
-                    $palabras = explode(' ', $nombre);
-                    
-                    foreach ($palabras as $palabra) {
-                        $iniciales .= strtoupper(substr($palabra, 0, 1));
-                    }
-                    
-                    $variableConcatenada = $iniciales . date('Ymd', strtotime($fecha)) . 'MIT';
-                @endphp
-
-                <div class="row portada_top">
-                    <div class="col-6">
-                        <img class="img_logo"
-                            src="https://www.mitviajes.com/wp-content/uploads/2019/03/Logo-Mit-Viajes.png"
-                            alt="mit viajes">
-                    </div>
-                    <div class="col-6 tiulo">
-                        <h1>Vaucher de servicio Mit Viajes Cusco</h1>
-                    </div>
-                </div>
-
-
+            @php
+                $nombre = $reporte->nombre;
+                $fecha = $reporte->created_at->format('Y-m-d'); // Utiliza la fecha de creación del reporte
+                
+                $iniciales = '';
+                $palabras = explode(' ', $nombre);
+                
+                foreach ($palabras as $palabra) {
+                    $iniciales .= strtoupper(substr($palabra, 0, 1));
+                }
+                
+                $variableConcatenada = $iniciales . date('Ymd', strtotime($fecha)) . 'MIT';
+            @endphp
+            <div class="portada">
+                <img src="https://www.mitviajes.com/wp-content/uploads/2023/07/POrtada-vaucher.webp" alt="">
             </div>
+
             <div class="col-12 mt-3">
                 @if (session('success'))
                     <div class="alert alert-success text-center">
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mt-3 info_div">
-                <h2>{{ $reporte->tour }}</h2>
+                <h2>Paquete: {{ $reporte->tour }}</h2>
                 <div class="info">
                     <span>+51 984 677 900</span>
                     <span>info@mitviajes.com</span>
@@ -84,11 +84,11 @@
                             </div>
                             <div class="col-4">
                                 <p>Começo do passeio:
-                                    <span>{{ date('d \d\e F \d\e Y', strtotime($reporte->fechaInicio)) }}</span>
+                                    <span>{{ date('Y-m-d', strtotime($reporte->fechaInicio)) }}</span>
                                 </p>
                             </div>
                             <div class="col-4">
-                                <p>Briefing: <span>{{ date('d \d\e F \d\e Y', strtotime($reporte->briefing)) }}</span>
+                                <p>Briefing: <span>{{ date('Y-m-d', strtotime($reporte->briefing)) }}</span>
                                 </p>
                             </div>
                             <div class="col-4">
