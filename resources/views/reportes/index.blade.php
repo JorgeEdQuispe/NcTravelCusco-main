@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <div class="row">
         <div class="col-6 float-left">
-            <h2>Lista de reportes:</h2>
+            <h2>Lista de boletas de confirmacion:</h2>
         </div>
         <div class="col-6">
             <a href="{{ route('reportes.create') }}" class="btn btn-primary btn-sm float-right mr-2">Nuevo Reporte</a>
@@ -83,7 +83,11 @@
     <script>
         var j = jQuery.noConflict();
         j(document).ready(function() {
-            j('#tabladatos').DataTable();
+            j('#tabladatos').DataTable({
+                order: [
+                    [0, 'des']
+                ]
+            });
         });
     </script>
 

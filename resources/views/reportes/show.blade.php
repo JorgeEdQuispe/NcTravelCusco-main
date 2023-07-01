@@ -37,7 +37,7 @@
                             alt="mit viajes">
                     </div>
                     <div class="col-6 tiulo">
-                        <h1>Reporte Mit Viajes Cusco</h1>
+                        <h1>Vaucher de servicio Mit Viajes Cusco</h1>
                     </div>
                 </div>
 
@@ -243,23 +243,58 @@
                 var resto = precio - adelanto;
                 document.getElementById("resto").textContent = resto;
             </script>
-            <a class="pdf-button pdf-only" onclick="generatePDF()" title="Imprimir PDF">
-                <i class="fas fa-print"></i>
-            </a>
-        </div>
-        <form action="{{ route('enviar.correo', $reporte->id) }}" method="POST">
-            @csrf
-            <button class="btnCorreo" type="submit" title="Enviar correio"><i class="fa fa-envelope"></i></button>
-        </form>
+            @if (Auth::check())
+                <a class="pdf-button pdf-only" onclick="generatePDF()" title="Imprimir PDF">
+                    <i class="fas fa-print"></i>
+                </a>
+                <form action="{{ route('enviar.correo', $reporte->id) }}" method="POST">
+                    @csrf
+                    <button class="btnCorreo" type="submit" title="Enviar correo"><i
+                            class="fa fa-envelope"></i></button>
+                </form>
+            @endif
+            <style>
+                .whatsappbutton {
+                    position: fixed;
+                    bottom: 165px;
+                    right: 20px;
+                    z-index: 999;
+                    background: #25D366;
+                    color: #fff;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                    width: 50px;
+                    height: 50px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: 0.4s;
+                }
 
-        <script>
-            function generatePDF() {
-                window.print();
-                document.title = originalTitle;
-                document.querySelector('button').style.display = 'block';
-                window.location.reload();
-            }
-        </script>
+                .whatsappbutton i {
+                    font-size: 24px;
+                }
+
+                .whatsappbutton:hover {
+                    background: #128C7E;
+                }
+            </style>
+            @if (Auth::check() && $reporte->numero)
+                <a href="https://api.whatsapp.com/send?phone={{ $reporte->numero }}&text=¡Hola!%20Aquí%20tienes%20mi%20boleta:%20{{ urlencode(url()->current()) }}"
+                    target="_blank" class="whatsappbutton">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            @endif
+
+            <script>
+                function generatePDF() {
+                    window.print();
+                    document.title = originalTitle;
+                    document.querySelector('button').style.display = 'block';
+                    window.location.reload();
+                }
+            </script>
 
 </body>
 

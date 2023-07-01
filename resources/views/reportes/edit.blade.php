@@ -3,9 +3,11 @@
 @section('titulo', 'Editar Reporte de Pasajeros')
 
 @section('contenido')
+    
+
     <div class="row">
         <div class="col-12">
-            <h2>Editar Reporte de Pasajeros</h2>
+            <h2>Editar confirmacion de servicios Cod: </h2>
         </div>
         <div class="col-12">
             @if ($errors->any())

@@ -2,10 +2,10 @@
 @section('titulo', 'Crear Reporte de Pasajeros')
 @section('contenido')
     <div class="row">
-
+        
 
         <div class="col-12">
-            <h2>Crear Reporte de Pasajeros</h2>
+            <h2>Crear Confirmacion de servicio</h2>
         </div>
 
 
@@ -37,8 +37,8 @@
 
                     <div class="col-sm-6 col-md-4 mt-3">
                         <label for="nombre">Nombre Pasajero:</label>
-                        <input type="text" name="nombre" class="form-control form-control-sm" required
-                            value="{{ old('nombre') }}">
+                        <input type="text" id="nombre-pasajero" name="nombre" class="form-control form-control-sm"
+                            required value="{{ old('nombre') }}">
                         @if ($errors->has('nombre'))
                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                         @endif
@@ -570,5 +570,5 @@
             </form>
         </div>
     </div>
+    
 @endsection
-sad
