@@ -59,7 +59,6 @@ class ReporteController extends Controller
             'llegada' => 'required',
             'salida' => 'required',
             'fechaInicio' => 'required|date',
-            'briefing' => 'nullable',
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',

@@ -67,7 +67,7 @@
                             value="{{ $reporte->briefing }}">
                     </div>
                     <div class="col-md-6 col-lg-4 mt-3">
-                        <label for="numPaxs">N° Paxs:</label>
+                        <label for="numPaxs">Cantidad de Pasajeros:</label>
                         <input type="number" name="numPaxs" class="form-control form-control-sm"
                             placeholder="Escoger número entre 1 y 14" value="{{ $reporte->numPaxs }}"
                             onchange="generarCamposPasajeros(this.value)">
