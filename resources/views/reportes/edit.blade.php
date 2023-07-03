@@ -65,7 +65,7 @@
                         <label for="numPaxs">Cantidad de Pasajeros:</label>
                         <input type="number" name="numPaxs" class="form-control form-control-sm"
                             placeholder="Escoger número entre 1 y 14" value="{{ $reporte->numPaxs }}"
-                            onchange="generarCamposPasajeros(this.value)">
+                            onchange="generarCamposPasajeros(this.value)" required>
                     </div>
                     <div class="col-md-6 col-lg-4 mt-3">
                         <label for="precio">Precio:</label>
@@ -129,11 +129,13 @@
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-2 mt-3">
-                                    <label for="esEstudiante{{ $index }}">Es estudiante:</label>
-                                    <select name="pasajeros[{{ $index }}][esEstudiante]" class="form-control">
-                                        <option value="1" {{ $pasajero->esEstudiante == 1 ? 'selected' : '' }}>Si
+                                    <label for="es_estudiante{{ $index }}">Es estudiante:</label>
+
+                                    <select name="pasajeros[{{ $index }}][es_estudiante]" class="form-control">
+                                        <option value="0" {{ $pasajero->es_estudiante === 0 ? 'selected' : '' }}>No
                                         </option>
-                                        <option value="0" {{ $pasajero->esEstudiante == 0 ? 'selected' : '' }}>No
+
+                                        <option value="1" {{ $pasajero->es_estudiante === 1 ? 'selected' : '' }}>Si
                                         </option>
                                     </select>
                                 </div>
@@ -400,24 +402,24 @@
                                 row.appendChild(col6);
 
                                 var label6 = document.createElement('label');
-                                label6.setAttribute('for', 'esEstudiante' + i);
+                                label6.setAttribute('for', 'es_estudiante' + i);
                                 label6.innerText = 'Es estudiante:';
                                 col6.appendChild(label6);
 
                                 var select = document.createElement('select');
-                                select.setAttribute('name', 'pasajeros[' + i + '][esEstudiante]');
+                                select.setAttribute('name', 'pasajeros[' + i + '][es_estudiante]');
                                 select.classList.add('form-control');
                                 select.setAttribute('required', 'required');
                                 col6.appendChild(select);
 
                                 var option1 = document.createElement('option');
-                                option1.setAttribute('value', '1');
-                                option1.innerText = 'Si';
+                                option1.setAttribute('value', '0');
+                                option1.innerText = 'No';
                                 select.appendChild(option1);
 
                                 var option2 = document.createElement('option');
-                                option2.setAttribute('value', '0');
-                                option2.innerText = 'No';
+                                option2.setAttribute('value', '1');
+                                option2.innerText = 'Si';
                                 select.appendChild(option2);
 
                                 contenedorPasajeros.appendChild(row);

@@ -97,19 +97,19 @@
                                 <p>Adiantamento: <span>{{ $reporte->adelanto }}</span></p>
                             </div>
                             <div class="col-4">
-                                <p>Restante: <span id="resto"></span></p>
+                                <p>Restante: <span> {{ $reporte->precio - $reporte->adelanto }} </span></p>
                             </div>
                             <div class="col-4">
                                 <p> Nº de passageiros: <span>{{ $reporte->numPaxs }}</span></p>
                             </div>
                             <div class="col-4">
                                 <p>Começo do passeio:
-                                    <span>{{ date('d \d\e F \d\e Y', strtotime($reporte->llegada)) }}</span>
+                                    <span>{{ date('Y-m-d', strtotime($reporte->llegada)) }}</span>
                                 </p>
                             </div>
                             <div class="col-4">
                                 <p>Começo do passeio:
-                                    <span>{{ date('d \d\e F \d\e Y', strtotime($reporte->salida)) }}</span>
+                                    <span>{{ date('Y-m-d', strtotime($reporte->salida)) }}</span>
                                 </p>
                             </div>
                         </div>
@@ -146,9 +146,9 @@
                                             </td>
                                             <td>{{ date('d-m-Y', strtotime($pasajero->fechaNacimiento)) }}</td>
                                             <td>
-                                                @if ($pasajero->esEstudiante == 1)
+                                                @if ($pasajero->es_estudiante == 1)
                                                     Sim
-                                                @elseif($pasajero->esEstudiante == 0)
+                                                @elseif($pasajero->es_estudiante == 0)
                                                     Não
                                                 @endif
                                             </td>
@@ -230,6 +230,13 @@
                             <h1>{{ $reporte->tour }}</h1>
                             {!! $reporte->detalles !!}
                         </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-3 info_div">
+                    <div class="info">
+                        <span>+51 984 677 900</span> -
+                        <span>info@mitviajes.com</span> -
+                        <span>www.mitviajes.com</span>
                     </div>
                 </div>
             </div>

@@ -313,30 +313,38 @@
                                     option2.innerText = 'No Vegano';
                                     select.appendChild(option2);
 
-                                    var col6 = document.createElement('div');
-                                    col6.classList.add('col-12', 'col-md-2', 'mt-3');
-                                    row.appendChild(col6);
+                                    var col7 = document.createElement('div');
+                                    col7.classList.add('col-12', 'col-md-2', 'mt-3');
+                                    row.appendChild(col7);
 
-                                    var label6 = document.createElement('label');
-                                    label6.setAttribute('for', 'esEstudiante' + i);
-                                    label6.innerText = 'Es estudiante:';
-                                    col6.appendChild(label6);
+                                    var label7 = document.createElement('label');
+                                    label7.setAttribute('for', 'estudiante' + i);
+                                    label7.innerText = '¿Es estudiante?';
+                                    col7.appendChild(label7);
 
-                                    var select = document.createElement('select');
-                                    select.setAttribute('name', 'pasajeros[' + i + '][esEstudiante]');
-                                    select.classList.add('form-control');
-                                    select.setAttribute('required', 'required');
-                                    col6.appendChild(select);
+                                    var hiddenInput = document.createElement('input');
+                                    hiddenInput.setAttribute('type', 'hidden');
+                                    hiddenInput.setAttribute('name', 'pasajeros[' + i + '][es_estudiante]');
+                                    hiddenInput.value = '0';
+                                    col7.appendChild(hiddenInput);
 
-                                    var option1 = document.createElement('option');
-                                    option1.setAttribute('value', '1');
-                                    option1.innerText = 'Si';
-                                    select.appendChild(option1);
+                                    var checkbox = document.createElement('input');
+                                    checkbox.setAttribute('type', 'checkbox');
+                                    checkbox.setAttribute('name', 'pasajeros[' + i + '][es_estudiante]');
+                                    checkbox.value = '1';
+                                    checkbox.classList.add('form-check-input');
+                                    checkbox.addEventListener('change', function() {
+                                        checkbox.addEventListener('change', function() {
+                                            if (this.checked) {
+                                                this.parentNode.querySelector('input[type="hidden"]').value = '1';
+                                            } else {
+                                                this.parentNode.querySelector('input[type="hidden"]').value = '0';
+                                            }
+                                        });
 
-                                    var option2 = document.createElement('option');
-                                    option2.setAttribute('value', '0');
-                                    option2.innerText = 'No';
-                                    select.appendChild(option2);
+                                    });
+                                    col7.appendChild(checkbox);
+
 
 
                                     contenedorPasajeros.appendChild(row);
