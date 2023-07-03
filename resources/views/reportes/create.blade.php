@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="numero">Whatsapp:</label>
+                        <label for="numero">Whatsapp de emergencia:</label>
                         <input type="text" name="numero" class="form-control form-control-sm" required
                             value="{{ old('numero') }}">
                         @if ($errors->has('numero'))
@@ -311,6 +311,31 @@
                                     var option2 = document.createElement('option');
                                     option2.setAttribute('value', 'no_vegano');
                                     option2.innerText = 'No Vegano';
+                                    select.appendChild(option2);
+
+                                    var col6 = document.createElement('div');
+                                    col6.classList.add('col-12', 'col-md-2', 'mt-3');
+                                    row.appendChild(col6);
+
+                                    var label6 = document.createElement('label');
+                                    label6.setAttribute('for', 'esEstudiante' + i);
+                                    label6.innerText = 'Es estudiante:';
+                                    col6.appendChild(label6);
+
+                                    var select = document.createElement('select');
+                                    select.setAttribute('name', 'pasajeros[' + i + '][esEstudiante]');
+                                    select.classList.add('form-control');
+                                    select.setAttribute('required', 'required');
+                                    col6.appendChild(select);
+
+                                    var option1 = document.createElement('option');
+                                    option1.setAttribute('value', '1');
+                                    option1.innerText = 'Si';
+                                    select.appendChild(option1);
+
+                                    var option2 = document.createElement('option');
+                                    option2.setAttribute('value', '0');
+                                    option2.innerText = 'No';
                                     select.appendChild(option2);
 
 

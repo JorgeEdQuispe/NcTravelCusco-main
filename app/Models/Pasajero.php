@@ -12,9 +12,10 @@ class Pasajero extends Model
     protected $fillable = [
         'nombre',
         'fechaNacimiento',
-        'numeroPasaporte', 
+        'numeroPasaporte',
         'nacionalidad',
         'alimentacion',
+        'es_estudiante',
         'reporte_id',
     ];
 

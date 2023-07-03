@@ -70,6 +70,7 @@ class ReporteController extends Controller
             'pasajeros.*.numeroPasaporte' => 'required',
             'pasajeros.*.nacionalidad' => 'required',
             'pasajeros.*.alimentacion' => 'required',
+            'pasajeros.*.esEstudiante' => 'nullable|boolean',
 
             'trenes' => 'nullable|array',
             'trenes.*.ruta' => 'required',
@@ -107,9 +108,11 @@ class ReporteController extends Controller
                 $pasajero->numeroPasaporte = htmlspecialchars($datosPasajero['numeroPasaporte']);
                 $pasajero->nacionalidad = htmlspecialchars($datosPasajero['nacionalidad']);
                 $pasajero->alimentacion = htmlspecialchars($datosPasajero['alimentacion']);
+                $pasajero->es_estudiante = isset($datosPasajero['esEstudiante']) ? true : false;
                 $reporte->pasajeros()->save($pasajero);
             }
         }
+
         if ($request->has('trenes') && is_array($request->trenes)) {
             foreach ($request->trenes as $datosTren) {
                 $tren = new Trenes();
@@ -188,6 +191,7 @@ class ReporteController extends Controller
             'pasajeros.*.numeroPasaporte' => 'nullable',
             'pasajeros.*.nacionalidad' => 'nullable',
             'pasajeros.*.alimentacion' => 'nullable',
+            'pasajeros.*.esEstudiante' => 'nullable|boolean',
             'trenes' => 'nullable|array',
             'trenes.*.ruta' => 'required',
             'trenes.*.compania' => 'required',
@@ -225,39 +229,40 @@ class ReporteController extends Controller
                 $pasajero->numeroPasaporte = htmlspecialchars($datosPasajero['numeroPasaporte']);
                 $pasajero->nacionalidad = htmlspecialchars($datosPasajero['nacionalidad']);
                 $pasajero->alimentacion = htmlspecialchars($datosPasajero['alimentacion']);
+                $pasajero->es_estudiante = isset($datosPasajero['esEstudiante']) ? true : false;
                 $reporte->pasajeros()->save($pasajero);
             }
         }
 
         // Eliminar tours existentes
-$reporte->trenes()->delete();
+        $reporte->trenes()->delete();
 
-if ($request->has('trenes') && is_array($request->trenes)) {
-    foreach ($request->trenes as $datosTren) {
-        $tren = new Trenes();
-        $tren->ruta = htmlspecialchars($datosTren['ruta']);
-        $tren->compania = htmlspecialchars($datosTren['compania']);
-        $tren->servicio = htmlspecialchars($datosTren['servicio']);
-        $tren->fecha = $datosTren['fecha'];
-        $tren->hora = htmlspecialchars($datosTren['hora']);
-        $reporte->trenes()->save($tren);
-    }
-}
+        if ($request->has('trenes') && is_array($request->trenes)) {
+            foreach ($request->trenes as $datosTren) {
+                $tren = new Trenes();
+                $tren->ruta = htmlspecialchars($datosTren['ruta']);
+                $tren->compania = htmlspecialchars($datosTren['compania']);
+                $tren->servicio = htmlspecialchars($datosTren['servicio']);
+                $tren->fecha = $datosTren['fecha'];
+                $tren->hora = htmlspecialchars($datosTren['hora']);
+                $reporte->trenes()->save($tren);
+            }
+        }
 
-// Eliminar hoteles existentes
-$reporte->hoteles()->delete();
+        // Eliminar hoteles existentes
+        $reporte->hoteles()->delete();
 
-if ($request->has('hoteles') && is_array($request->hoteles)) {
-    foreach ($request->hoteles as $datosHotel) {
-        $hotel = new Hotel();
-        $hotel->hotel = htmlspecialchars($datosHotel['hotel']);
-        $hotel->lugar = htmlspecialchars($datosHotel['lugar']);
-        $hotel->acomodacion = htmlspecialchars($datosHotel['acomodacion']);
-        $hotel->fechaIngreso = $datosHotel['fechaIngreso'];
-        $hotel->fechaSalida = $datosHotel['fechaSalida'];
-        $reporte->hoteles()->save($hotel);
-    }
-}
+        if ($request->has('hoteles') && is_array($request->hoteles)) {
+            foreach ($request->hoteles as $datosHotel) {
+                $hotel = new Hotel();
+                $hotel->hotel = htmlspecialchars($datosHotel['hotel']);
+                $hotel->lugar = htmlspecialchars($datosHotel['lugar']);
+                $hotel->acomodacion = htmlspecialchars($datosHotel['acomodacion']);
+                $hotel->fechaIngreso = $datosHotel['fechaIngreso'];
+                $hotel->fechaSalida = $datosHotel['fechaSalida'];
+                $reporte->hoteles()->save($hotel);
+            }
+        }
 
 
         return redirect()->route('reportes.index')->with('success', 'Reporte actualizado exitosamente');

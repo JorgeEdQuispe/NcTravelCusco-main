@@ -3,7 +3,7 @@
 @section('titulo', 'Editar Reporte de Pasajeros')
 
 @section('contenido')
-    
+
 
     <div class="row">
         <div class="col-12">
@@ -42,7 +42,7 @@
                             value="{{ $reporte->email }}" required>
                     </div>
                     <div class="col-md-6 col-lg-4 mt-3">
-                        <label for="numero">Whatsapp:</label>
+                        <label for="numero">Whatsapp de emergencia:</label>
                         <input type="text" name="numero" class="form-control form-control-sm"
                             value="{{ $reporte->numero }}" required>
                     </div>
@@ -128,11 +128,19 @@
                                         </option>
                                     </select>
                                 </div>
+                                <div class="col-12 col-md-2 mt-3">
+                                    <label for="esEstudiante{{ $index }}">Es estudiante:</label>
+                                    <select name="pasajeros[{{ $index }}][esEstudiante]" class="form-control">
+                                        <option value="1" {{ $pasajero->esEstudiante == 1 ? 'selected' : '' }}>Si
+                                        </option>
+                                        <option value="0" {{ $pasajero->esEstudiante == 0 ? 'selected' : '' }}>No
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                             <hr>
                         @endforeach
                     </div>
-
 
                     <div class="separadorReportes mt-3 mb-2" style="width: 100%; border-top:1px solid grey">
                         <h3 class="mt-2">Trenes:</h3>
@@ -387,6 +395,30 @@
                                 option2.innerText = 'No Vegano';
                                 select.appendChild(option2);
 
+                                var col6 = document.createElement('div');
+                                col6.classList.add('col-12', 'col-md-2', 'mt-3');
+                                row.appendChild(col6);
+
+                                var label6 = document.createElement('label');
+                                label6.setAttribute('for', 'esEstudiante' + i);
+                                label6.innerText = 'Es estudiante:';
+                                col6.appendChild(label6);
+
+                                var select = document.createElement('select');
+                                select.setAttribute('name', 'pasajeros[' + i + '][esEstudiante]');
+                                select.classList.add('form-control');
+                                select.setAttribute('required', 'required');
+                                col6.appendChild(select);
+
+                                var option1 = document.createElement('option');
+                                option1.setAttribute('value', '1');
+                                option1.innerText = 'Si';
+                                select.appendChild(option1);
+
+                                var option2 = document.createElement('option');
+                                option2.setAttribute('value', '0');
+                                option2.innerText = 'No';
+                                select.appendChild(option2);
 
                                 contenedorPasajeros.appendChild(row);
 
@@ -396,6 +428,7 @@
                         }
                     }
                 </script>
+
 
                 <script>
                     function generarCamposTrenes(numeroTrenes) {

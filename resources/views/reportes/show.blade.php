@@ -128,6 +128,7 @@
                                             <th scope="col">Nacionalidade</th>
                                             <th scope="col">Vegetariano</th>
                                             <th>Data de nascimiento</th>
+                                            <th>Estudante</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -144,6 +145,13 @@
                                                 @endif
                                             </td>
                                             <td>{{ date('d-m-Y', strtotime($pasajero->fechaNacimiento)) }}</td>
+                                            <td>
+                                                @if ($pasajero->esEstudiante == 1)
+                                                    Sim
+                                                @elseif($pasajero->esEstudiante == 0)
+                                                    Não
+                                                @endif
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
