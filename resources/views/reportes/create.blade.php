@@ -2,7 +2,7 @@
 @section('titulo', 'Crear Reporte de Pasajeros')
 @section('contenido')
     <div class="row">
-        
+
 
         <div class="col-12">
             <h2>Crear Confirmacion de servicio</h2>
@@ -90,22 +90,14 @@
                     </div>
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="briefing">Briefing:</label>
-                        <input type="date" name="briefing" class="form-control form-control-sm" required
-                            value="{{ old('briefing') }}">
-                        @if ($errors->has('briefing'))
-                            <span class="text-danger">{{ $errors->first('briefing') }}</span>
+                        <label for="numPaxs">Cantidad de Pasajeros:</label>
+                        <input type="number" name="numPaxs" class="form-control form-control-sm"
+                            placeholder="Escoger número entre 1 a 14" onchange="generarCamposPasajeros(this.value)"
+                            value="{{ old('numPaxs') }}" required>
+                        @if ($errors->has('numPaxs'))
+                            <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
                         @endif
                     </div>
-
-                    <div class="col-sm-6 col-md-4 mt-3">
-    <label for="numPaxs">Cantidad de Pasajeros:</label>
-    <input type="number" name="numPaxs" class="form-control form-control-sm" placeholder="Escoger número entre 1 a 14"
-        onchange="generarCamposPasajeros(this.value)" value="{{ old('numPaxs') }}" required>
-    @if ($errors->has('numPaxs'))
-        <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
-    @endif
-</div>
 
 
                     <div class="col-sm-6 col-md-4 mt-3">
@@ -570,5 +562,5 @@
             </form>
         </div>
     </div>
-    
+
 @endsection

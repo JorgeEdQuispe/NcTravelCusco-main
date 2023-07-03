@@ -88,10 +88,6 @@
                                 </p>
                             </div>
                             <div class="col-4">
-                                <p>Briefing: <span>{{ date('Y-m-d', strtotime($reporte->briefing)) }}</span>
-                                </p>
-                            </div>
-                            <div class="col-4">
                                 <p>Tipo de moeda: <span>Dólares (USD)</span></p>
                             </div>
                             <div class="col-4">

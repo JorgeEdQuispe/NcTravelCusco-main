@@ -14,7 +14,6 @@ class Reporte extends Model
         'llegada',
         'salida',
         'fechaInicio', 
-        'briefing',
         'numPaxs',
         'precio',
         'adelanto',

@@ -59,7 +59,6 @@ class ReporteController extends Controller
             'llegada' => 'required',
             'salida' => 'required',
             'fechaInicio' => 'required|date',
-            'briefing' => 'nullable',
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',
@@ -95,7 +94,6 @@ class ReporteController extends Controller
         $reporte->llegada = $request->input('llegada');
         $reporte->salida = $request->input('salida');
         $reporte->fechaInicio = $request->input('fechaInicio');
-        $reporte->briefing = $request->input('briefing');
         $reporte->numPaxs = $request->input('numPaxs');
         $reporte->precio = $request->input('precio');
         $reporte->adelanto = $request->input('adelanto');
@@ -180,7 +178,6 @@ class ReporteController extends Controller
             'llegada' => 'required',
             'salida' => 'required',
             'fechaInicio' => 'required|date',
-            'briefing' => 'nullable',
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',
@@ -213,7 +210,6 @@ class ReporteController extends Controller
         $reporte->llegada = $request->input('llegada');
         $reporte->salida = $request->input('salida');
         $reporte->fechaInicio = $request->input('fechaInicio');
-        $reporte->briefing = $request->input('briefing');
         $reporte->numPaxs = $request->input('numPaxs');
         $reporte->precio = $request->input('precio');
         $reporte->adelanto = $request->input('adelanto');
