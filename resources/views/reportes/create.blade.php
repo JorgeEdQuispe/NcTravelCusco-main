@@ -99,14 +99,14 @@
                     </div>
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="numPaxs">N° Paxs:</label>
-                        <input type="number" name="numPaxs" class="form-control form-control-sm"
-                            placeholder="Escoger número entre 1 a 14" onchange="generarCamposPasajeros(this.value)"
-                            value="{{ old('numPaxs') }}">
-                        @if ($errors->has('numPaxs'))
-                            <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
-                        @endif
-                    </div>
+    <label for="numPaxs">Cantidad de Pasajeros:</label>
+    <input type="number" name="numPaxs" class="form-control form-control-sm" placeholder="Escoger número entre 1 a 14"
+        onchange="generarCamposPasajeros(this.value)" value="{{ old('numPaxs') }}" required>
+    @if ($errors->has('numPaxs'))
+        <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
+    @endif
+</div>
+
 
                     <div class="col-sm-6 col-md-4 mt-3">
                         <label for="precio">Precio:</label>

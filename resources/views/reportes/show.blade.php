@@ -130,7 +130,7 @@
                                             <th scope="col">Nome completo</th>
                                             <th scope="col">Passaporte</th>
                                             <th scope="col">Nacionalidade</th>
-                                            <th scope="col">Alimentando</th>
+                                            <th scope="col">Vegetariano</th>
                                             <th>Data de nascimiento</th>
                                         </tr>
                                     </thead>
@@ -142,9 +142,9 @@
                                             <td>{{ $pasajero->nacionalidad }}</td>
                                             <td>
                                                 @if ($pasajero->alimentacion == 'vegano')
-                                                    Vegan@
+                                                    Sim
                                                 @elseif($pasajero->alimentacion == 'no_vegano')
-                                                    No vegan@
+                                                    Não
                                                 @endif
                                             </td>
                                             <td>{{ date('d-m-Y', strtotime($pasajero->fechaNacimiento)) }}</td>
