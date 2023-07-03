@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('numeroPasaporte');
             $table->string('nacionalidad');
             $table->string('alimentacion');
+            $table->boolean('es_estudiante')->default(false);
             $table->unsignedBigInteger('reporte_id');
             $table->timestamps();
             $table->foreign('reporte_id')->references('id')->on('reportes')->onDelete('cascade');

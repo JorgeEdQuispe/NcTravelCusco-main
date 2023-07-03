@@ -2,7 +2,7 @@
 @section('titulo', 'Crear Reporte de Pasajeros')
 @section('contenido')
     <div class="row">
-        
+
 
         <div class="col-12">
             <h2>Crear Confirmacion de servicio</h2>
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="numero">Whatsapp:</label>
+                        <label for="numero">Whatsapp de emergencia:</label>
                         <input type="text" name="numero" class="form-control form-control-sm" required
                             value="{{ old('numero') }}">
                         @if ($errors->has('numero'))
@@ -90,22 +90,14 @@
                     </div>
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="briefing">Briefing:</label>
-                        <input type="date" name="briefing" class="form-control form-control-sm" required
-                            value="{{ old('briefing') }}">
-                        @if ($errors->has('briefing'))
-                            <span class="text-danger">{{ $errors->first('briefing') }}</span>
+                        <label for="numPaxs">Cantidad de Pasajeros:</label>
+                        <input type="number" name="numPaxs" class="form-control form-control-sm"
+                            placeholder="Escoger número entre 1 a 14" onchange="generarCamposPasajeros(this.value)"
+                            value="{{ old('numPaxs') }}" required>
+                        @if ($errors->has('numPaxs'))
+                            <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
                         @endif
                     </div>
-
-                    <div class="col-sm-6 col-md-4 mt-3">
-    <label for="numPaxs">Cantidad de Pasajeros:</label>
-    <input type="number" name="numPaxs" class="form-control form-control-sm" placeholder="Escoger número entre 1 a 14"
-        onchange="generarCamposPasajeros(this.value)" value="{{ old('numPaxs') }}" required>
-    @if ($errors->has('numPaxs'))
-        <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
-    @endif
-</div>
 
 
                     <div class="col-sm-6 col-md-4 mt-3">
@@ -320,6 +312,39 @@
                                     option2.setAttribute('value', 'no_vegano');
                                     option2.innerText = 'No Vegano';
                                     select.appendChild(option2);
+
+                                    var col7 = document.createElement('div');
+                                    col7.classList.add('col-12', 'col-md-2', 'mt-3');
+                                    row.appendChild(col7);
+
+                                    var label7 = document.createElement('label');
+                                    label7.setAttribute('for', 'estudiante' + i);
+                                    label7.innerText = '¿Es estudiante?';
+                                    col7.appendChild(label7);
+
+                                    var hiddenInput = document.createElement('input');
+                                    hiddenInput.setAttribute('type', 'hidden');
+                                    hiddenInput.setAttribute('name', 'pasajeros[' + i + '][es_estudiante]');
+                                    hiddenInput.value = '0';
+                                    col7.appendChild(hiddenInput);
+
+                                    var checkbox = document.createElement('input');
+                                    checkbox.setAttribute('type', 'checkbox');
+                                    checkbox.setAttribute('name', 'pasajeros[' + i + '][es_estudiante]');
+                                    checkbox.value = '1';
+                                    checkbox.classList.add('form-check-input');
+                                    checkbox.addEventListener('change', function() {
+                                        checkbox.addEventListener('change', function() {
+                                            if (this.checked) {
+                                                this.parentNode.querySelector('input[type="hidden"]').value = '1';
+                                            } else {
+                                                this.parentNode.querySelector('input[type="hidden"]').value = '0';
+                                            }
+                                        });
+
+                                    });
+                                    col7.appendChild(checkbox);
+
 
 
                                     contenedorPasajeros.appendChild(row);
@@ -570,5 +595,5 @@
             </form>
         </div>
     </div>
-    
+
 @endsection
