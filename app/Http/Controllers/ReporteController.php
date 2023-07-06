@@ -62,7 +62,7 @@ class ReporteController extends Controller
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',
-            'detalles' => 'nullable',
+            'detalles' => 'required',
 
             'pasajeros' => 'nullable|array',
             'pasajeros.*.nombre' => 'required',
@@ -85,6 +85,9 @@ class ReporteController extends Controller
             'hoteles.*.acomodacion' => 'required',
             'hoteles.*.fechaIngreso' => 'required|date',
             'hoteles.*.fechaSalida' => 'required|date',
+        ], [
+            'detalles.required' => 'Por favor, ingrese los detalles',
+            // Otros mensajes de validación para los demás campos...
         ]);
 
         $reporte = new Reporte();
@@ -184,7 +187,7 @@ class ReporteController extends Controller
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',
-            'detalles' => 'nullable',
+            'detalles' => 'required',
             'pasajeros' => 'nullable|array',
             'pasajeros.*.nombre' => 'nullable',
             'pasajeros.*.fechaNacimiento' => 'nullable',
