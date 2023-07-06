@@ -1,125 +1,154 @@
 @extends('layouts.admin')
-@section('titulo', 'Crear Reporte de Pasajeros')
+@sec ton('tiulo', 'Crear Reporte de Pasajeros')
 @section('contenido')
     <div class="row">
-
+ 
 
         <div class="col-12">
-            <h2>Crear Confirmacion de servicio</h2>
+            <h2>Cear Confirmacion de servicio</h2>
         </div>
 
-
+ 
         <div class="col-12">
             @if ($errors->any())
-                <div class="alert alert-danger">
+                <di class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <ul>
-                        @foreach ($errors->all() as $error)
+                        @foreah ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
-                    </ul>
+                   </ul>
                 </div>
             @endif
         </div>
 
         <div class="col-12">
-            <form action="{{ route('reportes.store') }}" method="POST">
+            <form ation="{{ route('reportes.store') }}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-sm-6 col-md-4 mt-3">
+                    <div class"col-sm-6 col-md-4 mt-3">
                         <label for="tour">Paquete turístico:</label>
                         <input type="text" name="tour" class="form-control form-control-sm" required
-                            value="{{ old('tour') }}">
+                           value="{{ old('tour') }}">
                         @if ($errors->has('tour'))
                             <span class="text-danger">{{ $errors->first('tour') }}</span>
                         @endif
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                   <div class="col-sm-6 col-md-4 mt-3">
                         <label for="nombre">Nombre Pasajero:</label>
                         <input type="text" id="nombre-pasajero" name="nombre" class="form-control form-control-sm"
-                            required value="{{ old('nombre') }}">
+                            reuired value="{{ old('nombre') }}">
                         @if ($errors->has('nombre'))
                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
-                        @endif
+                        endif
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                    <div class="colsm-6 col-md-4 mt-3">
                         <label for="email">Email:</label>
                         <input type="email" name="email" class="form-control form-control-sm" required
-                            value="{{ old('email') }}">
+                           value="{{ old('email') }}">
                         @if ($errors->has('email'))
                             <span class="text-danger">{{ $errors->first('email') }}</span>
                         @endif
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                   <div class="col-sm-6 col-md-4 mt-3">
                         <label for="numero">Whatsapp de emergencia:</label>
                         <input type="text" name="numero" class="form-control form-control-sm" required
-                            value="{{ old('numero') }}">
+                            vaue="{{ old('numero') }}">
                         @if ($errors->has('numero'))
                             <span class="text-danger">{{ $errors->first('numero') }}</span>
-                        @endif
+                       @endif
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                    <div class="ol-sm-6 col-md-4 mt-3">
                         <label for="llegada">Fecha de llegada:</label>
                         <input type="date" name="llegada" class="form-control form-control-sm" required
-                            value="{{ old('llegada') }}">
+                           value="{{ old('llegada') }}">
                         @if ($errors->has('llegada'))
                             <span class="text-danger">{{ $errors->first('llegada') }}</span>
-                        @endif
+                       @endif
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                    <div class="ol-sm-6 col-md-4 mt-3">
                         <label for="salida">Fecha de salida:</label>
                         <input type="date" name="salida" class="form-control form-control-sm" required
-                            value="{{ old('salida') }}">
+                     
+       value="{{ old('salida') }}">
                         @if ($errors->has('salida'))
                             <span class="text-danger">{{ $errors->first('salida') }}</span>
                         @endif
+
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                 
+   <div class="col-sm-6 col-md-4 mt-3">
                         <label for="fechaInicio">Fecha Inicio de Tour:</label>
                         <input type="date" name="fechaInicio" class="form-control form-control-sm" required
-                            value="{{ old('fechaInicio') }}">
+                   
+     
+         value="{{ old('fechaInicio') }}">
                         @if ($errors->has('fechaInicio'))
                             <span class="text-danger">{{ $errors->first('fechaInicio') }}</span>
-                        @endif
+                         @endif
+    
+
                     </div>
 
-                    <div class="col-sm-6 col-md-4 mt-3">
+                     <div
+     
+class="col-sm-6 col-md-4 mt-3">
                         <label for="numPaxs">Cantidad de Pasajeros:</label>
                         <input type="number" name="numPaxs" class="form-control form-control-sm"
-                            placeholder="Escoger número entre 1 a 14" onchange="generarCamposPasajeros(this.value)"
+                           
+     
+ placeholder="Escoger número entre 1 a 14" onchange="generarCamposPasajeros(this.value)"
                             value="{{ old('numPaxs') }}" required>
                         @if ($errors->has('numPaxs'))
-                            <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
+                          
+     
+  <span class="text-danger">{{ $errors->first('numPaxs') }}</span>
                         @endif
                     </div>
+ 
+    
 
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="precio">Precio:</label>
+                         <la
+    b
+el for="precio">Precio:</label>
                         <input type="number" name="precio" id="precio" class="form-control form-control-sm"
                             onchange="calcularRestante()" value="{{ old('precio') }}" required>
-                        @if ($errors->has('precio'))
+                         @i
+    f
+ ($errors->has('precio'))
                             <span class="text-danger">{{ $errors->first('precio') }}</span>
                         @endif
-                    </div>
+                     </div>
+    
+
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="adelanto">Adelanto:</label>
+                         <la
+    b
+el for="adelanto">Adelanto:</label>
                         <input type="number" name="adelanto" id="adelanto" class="form-control form-control-sm"
                             onchange="calcularRestante()" value="{{ old('adelanto') }}" required>
-                        @if ($errors->has('adelanto'))
+                         @i
+    f
+ ($errors->has('adelanto'))
                             <span class="text-danger">{{ $errors->first('adelanto') }}</span>
                         @endif
-                    </div>
+                     </div>
+    
+
 
                     <div class="col-sm-6 col-md-4 mt-3">
-                        <label for="restante">Restante:</label>
+                         <lab
+    e
+l for="restante">Restante:</label>
                         <input type="number" name="restante" id="restante" class="form-control form-control-sm" readonly
                             value="{{ old('restante') }}">
                     </div>
@@ -182,13 +211,14 @@
                     </div>
 
                     <div class="col-12 mt-3">
-                        <label for="detalles">Detalles:</label>
-                        <textarea name="detalles" class="ckeditor form-control form-control-sm" rows="5"
-                            placeholder="Ingrese los detalles" required>{{ old('detalles') }}</textarea>
-                        @if ($errors->has('detalles'))
-                            <span class="text-danger">{{ $errors->first('detalles') }}</span>
-                        @endif
-                    </div>
+    <label for="detalles">Detalles:</label>
+    <textarea name="detalles" class="ckeditor form-control form-control-sm" rows="5"
+        placeholder="Ingrese los detalles" required>{{ old('detalles') }}</textarea>
+    @if ($errors->has('detalles'))
+        <span class="text-danger">{{ $errors->first('detalles') }}</span>
+    @endif
+</div>
+
 
                     <script>
                         function generarCamposPasajeros(numeroPasajeros) {
