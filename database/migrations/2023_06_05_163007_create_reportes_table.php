@@ -18,14 +18,14 @@ return new class extends Migration
             $table->string('tour');
             $table->string('nombre');
             $table->string('numero');
-            $table->string('llegada');
-            $table->string('salida');
+            $table->date('llegada')->nullable();
+            $table->date('salida')->nullable(); // Agregada columna 'salida' con valores nulos
             $table->string('email');
-            $table->date('fechaInicio');
+            $table->date('fechaInicio')->nullable(); // Agregada columna 'fechaInicio' con valores nulos
             $table->integer('numPaxs');
             $table->integer('precio');
             $table->integer('adelanto');
-            $table->text('detalles');
+            $table->text('detalles')->nullable(); // Agregada columna 'detalles' con valores nulos
             $table->timestamps();
         });
     }

@@ -49,17 +49,17 @@
                     <div class="col-md-6 col-lg-4 mt-3">
                         <label for="llegada">Fecha de llegada:</label>
                         <input type="date" name="llegada" class="form-control form-control-sm"
-                            value="{{ $reporte->llegada }}" required>
+                            value="{{ $reporte->llegada }}" >
                     </div>
                     <div class="col-md-6 col-lg-4 mt-3">
                         <label for="salida">Fecha de salida:</label>
                         <input type="date" name="salida" class="form-control form-control-sm"
-                            value="{{ $reporte->salida }}" required>
+                            value="{{ $reporte->salida }}" >
                     </div>
                     <div class="col-md-6 col-lg-4 mt-3">
                         <label for="fechaInicio">Fecha Inicio:</label>
                         <input type="date" name="fechaInicio" class="form-control form-control-sm"
-                            value="{{ $reporte->fechaInicio }}" required>
+                            value="{{ $reporte->fechaInicio }}" >
                     </div>
                     <div class="col-md-6 col-lg-4 mt-3">
                         <label for="numPaxs">Cantidad de Pasajeros:</label>

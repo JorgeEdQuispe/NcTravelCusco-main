@@ -64,16 +64,13 @@
 
                     <div class="col-sm-6 col-md-4 mt-3">
                         <label for="llegada">Fecha de llegada:</label>
-                        <input type="date" name="llegada" class="form-control form-control-sm" required
+                        <input type="date" name="llegada" class="form-control form-control-sm"
                             value="{{ old('llegada') }}">
-                        @if ($errors->has('llegada'))
-                            <span class="text-danger">{{ $errors->first('llegada') }}</span>
-                        @endif
                     </div>
 
                     <div class="col-sm-6 col-md-4 mt-3">
                         <label for="salida">Fecha de salida:</label>
-                        <input type="date" name="salida" class="form-control form-control-sm" required
+                        <input type="date" name="salida" class="form-control form-control-sm"
                             value="{{ old('salida') }}">
                         @if ($errors->has('salida'))
                             <span class="text-danger">{{ $errors->first('salida') }}</span>
@@ -82,7 +79,7 @@
 
                     <div class="col-sm-6 col-md-4 mt-3">
                         <label for="fechaInicio">Fecha Inicio de Tour:</label>
-                        <input type="date" name="fechaInicio" class="form-control form-control-sm" required
+                        <input type="date" name="fechaInicio" class="form-control form-control-sm"
                             value="{{ old('fechaInicio') }}">
                         @if ($errors->has('fechaInicio'))
                             <span class="text-danger">{{ $errors->first('fechaInicio') }}</span>
