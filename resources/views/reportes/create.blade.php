@@ -179,13 +179,15 @@
                     </div>
 
                     <div class="col-12 mt-3">
-                        <label for="detalles">Detalles:</label>
-                        <textarea name="detalles" class="ckeditor form-control form-control-sm" rows="5"
-                            placeholder="Ingrese los detalles" required>{{ old('detalles') }}</textarea>
-                        @if ($errors->has('detalles'))
-                            <span class="text-danger">{{ $errors->first('detalles') }}</span>
-                        @endif
-                    </div>
+                    <h3 class="mt-2">Detalles:</h3>
+                    <label for="detalles">Detalles:</label>
+    <textarea name="detalles" class="ckeditor form-control form-control-sm" rows="5"
+        placeholder="Ingrese los detalles" required>{{ old('detalles') }}</textarea>
+    @if ($errors->has('detalles'))
+        <span class="text-danger">{{ $errors->first('detalles') }}</span>
+    @endif
+</div>
+
 
                     <script>
                         function generarCamposPasajeros(numeroPasajeros) {
