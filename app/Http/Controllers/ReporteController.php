@@ -62,7 +62,7 @@ class ReporteController extends Controller
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',
-            'detalles' => 'required',
+            'detalles' => 'nullable',
 
             'pasajeros' => 'nullable|array',
             'pasajeros.*.nombre' => 'required',
@@ -199,7 +199,7 @@ class ReporteController extends Controller
             'numPaxs' => 'nullable|integer',
             'precio' => 'nullable|numeric',
             'adelanto' => 'nullable|numeric',
-            'detalles' => 'required',
+            'detalles' => 'nullable',
             'pasajeros' => 'nullable|array',
             'pasajeros.*.nombre' => 'nullable',
             'pasajeros.*.fechaNacimiento' => 'nullable',
